@@ -10,7 +10,6 @@ Cuba.plugin Cuba::TextHelpers
 Cuba.plugin Mote::Helpers
   % end
 % end
-
 % if gems.include? "shield"
 Cuba.plugin Shield::Helpers
 % end
