@@ -9,16 +9,6 @@ module Plan
       "foo"
     end
 
-    # This will be use with Rack::Session::Cookie.
-    def cookie_key
-      name
-    end
-
-    # This will be use with Rack::Session::Cookie.
-    def cookie_secret
-      Digest::SHA1.hexdigest(name + Time.now.to_f.to_s)
-    end
-
     # List of dependencies. This list if a starting point, and you can
     # add more either now or later. For each gem, we'll include the
     # latest version if the final .gems manifest. Feel free to change

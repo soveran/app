@@ -26,8 +26,8 @@ Dir["./filters/**/*.rb"].each { |rb| require rb }
 # We love REST, so we prefer to use HTTP verbs.
 Cuba.use Rack::MethodOverride
 Cuba.use Rack::Session::Cookie,
-  key: "{{cookie_key}}",
-  secret: "{{cookie_secret}}"
+  key: "{{name}}",
+  secret: "{{Digest::SHA1.hexdigest(name + Time.now.to_f.to_s)}}"
 
 % if gems.include? "rack-protection"
 Cuba.use Rack::Protection
