@@ -26,14 +26,6 @@ header h1 {
   margin: 60px 0 0 0;
 }
 
-header p.star {
-  font-size: 100px;
-  line-height: 100px;
-  color: #c33;
-  margin: 0;
-  padding: 0;
-}
-
 header p {
   font-family: "Parisienne";
   font-size: 30px;
