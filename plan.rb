@@ -29,10 +29,6 @@ module Plan
   end
 
   class Readme < App
-    def description
-      "Basic Cuba App"
-    end
-
     def destination
       "#{name}/README"
     end
