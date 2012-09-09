@@ -14,13 +14,13 @@ module Plan
     # latest version if the final .gems manifest. Feel free to change
     # it at will.
     def gems
-      %w(
-        cuba
-        cuba-contrib
-        rack-protection
-        mote
-        shield
-      )
+      [
+        "cuba",            # Required.
+        "mote",            # Required, but you can change it later.
+        "cuba-contrib",    # Optional, provides some nice helpers.
+        "rack-protection", # Optional, but recommended.
+        "shield"           # Optional, helpers for authentication.
+      ]
     end
 
     def destination
