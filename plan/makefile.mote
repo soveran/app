@@ -1,0 +1,10 @@
+gems:
+	which gs  || gem install gs
+	which dep || gem install dep
+% gems.each do |gem|
+	dep add {{gem}}
+% end
+	gs init
+
+install:
+	dep install

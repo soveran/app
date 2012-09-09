@@ -1,0 +1,54 @@
+% gems.each do |gem|
+require "{{ gem.sub("-", "/") }}"
+% end
+
+% if gems.include? "mote"
+  % if gems.include? "cuba-contrib"
+Cuba.plugin Cuba::Mote
+Cuba.plugin Cuba::TextHelpers
+  % else
+Cuba.plugin Mote::Helpers
+  % end
+% end
+
+% if gems.include? "shield"
+Cuba.plugin Shield::Helpers
+% end
+
+# Require all application files.
+Dir["./models/**/*.rb"].each  { |rb| require rb }
+Dir["./routes/**/*.rb"].each  { |rb| require rb }
+
+# Require all helper files.
+Dir["./helpers/**/*.rb"].each { |rb| require rb }
+Dir["./filters/**/*.rb"].each { |rb| require rb }
+
+# We love REST, so we prefer to use HTTP verbs.
+Cuba.use Rack::MethodOverride
+Cuba.use Rack::Session::Cookie,
+  key: "{{cookie_key}}",
+  secret: "{{cookie_secret}}"
+
+% if gems.include? "rack-protection"
+Cuba.use Rack::Protection
+Cuba.use Rack::Protection::RemoteReferrer
+% end
+
+Cuba.use Rack::Static,
+  urls: %w[/js /css /img],
+  root: "./public"
+
+Cuba.define do
+% if gems.include? "shield"
+  persist_session!
+% end
+
+  on root do
+  % if gems.include? "cuba-contrib"
+    render("home")
+  % else
+    res.write mote("views/layout.mote",
+      content: mote("views/home.mote"))
+  % end
+  end
+end
