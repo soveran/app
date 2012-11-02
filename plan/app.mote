@@ -22,7 +22,6 @@ Dir["./routes/**/*.rb"].each  { |rb| require rb }
 Dir["./helpers/**/*.rb"].each { |rb| require rb }
 Dir["./filters/**/*.rb"].each { |rb| require rb }
 
-# We love REST, so we prefer to use HTTP verbs.
 Cuba.use Rack::MethodOverride
 Cuba.use Rack::Session::Cookie,
   key: "{{name}}",
