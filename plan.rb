@@ -9,9 +9,9 @@ module Plan
       "foo"
     end
 
-    # List of dependencies. This list if a starting point, and you can
+    # List of dependencies. This list is a starting point, and you can
     # add more either now or later. For each gem, we'll include the
-    # latest version if the final .gems manifest. Feel free to change
+    # latest version in the final .gems manifest. Feel free to change
     # it at will.
     def gems
       [
